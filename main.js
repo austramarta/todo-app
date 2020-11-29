@@ -47,13 +47,18 @@ function removeOneTask(e) {
     };
 }
 
-
+//filter tasks
 filterInput.addEventListener("keyup", filterTasks);
 function filterTasks(e) {
     filterInputText = e.target.value;
-    console.log(filterInputText);
+
+    taskListItem
+
 
 }
+
+
+
 
 
 taskInputField.addEventListener("keyup", function (event) {
