@@ -4,6 +4,7 @@ const taskList = document.querySelector(".task-list");
 const taskListItem = document.querySelectorAll(".list-item");
 const clearTasksBtn = document.querySelector(".clear-tasks");
 const filterInput = document.getElementById("filter");
+const checkbox = document.getElementById("checkbox");
 
 //create new li element
 function addNewTask() {
@@ -23,9 +24,40 @@ function addNewTask() {
     deleteTaskBtn.classList.add("btn-delete");
     newTaskListItem.appendChild(deleteTaskBtn);
 
-    //append new task list item to task list ul
+    //create a checkbox for each task list item
+    let taskCheck = document.createElement("input");
+    taskCheck.setAttribute("type", "checkbox");
+    taskCheck.classList.add("checkbox");
+    taskCheck.id = "checkbox";
+    newTaskListItem.appendChild(taskCheck);
+
+    //append new task list item (with checkbox and delete btn) to task list ul
     taskList.appendChild(newTaskListItem);
+    console.log(taskList);
+
 }
+
+
+
+//remove one specific task
+taskList.addEventListener("click", removeOneTask);
+function removeOneTask(e) {
+    if (e.target.classList.contains("btn-delete")) {
+        // console.log(e.target.parentElement);
+        e.target.parentElement.remove();
+    };
+}
+
+//check that a task is finished
+taskList.addEventListener("click", markTaskAsDone);
+function markTaskAsDone(e) {
+    if (e.target.classList.contains("checkbox") && e.target.checked) {
+        e.target.parentElement.style.textDecoration = "line-through";
+    } else {
+        e.target.parentElement.style.textDecoration = "none";
+    };
+}
+
 
 
 //remove all tasks at once
@@ -36,15 +68,6 @@ function removeAllTasks() {
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
-}
-
-//remove one specific task
-taskList.addEventListener("click", removeOneTask)
-function removeOneTask(e) {
-    if (e.target.classList.contains("btn-delete")) {
-        // console.log(e.target.parentElement);
-        e.target.parentElement.remove();
-    };
 }
 
 //filter tasks

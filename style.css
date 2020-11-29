@@ -29,6 +29,17 @@
 /* render 'X' instead of delete button*/
 .btn-delete:after {
   display: inline-block;
-  content: '\00d7';
+  content: '\2715';
   color: black;
+  position: relative;
+  top: -0.4rem;
+  width: 2rem;
+}
+.checkbox {
+  float: right;
+  margin-right: 1rem;
+  border-radius: 0%;
+}
+.checkbox:checked {
+  background-color: red;
 }
