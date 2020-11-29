@@ -48,18 +48,12 @@ function removeOneTask(e) {
 }
 
 
-
 filterInput.addEventListener("keyup", filterTasks);
 function filterTasks(e) {
     filterInputText = e.target.value;
-
-    taskListItem
-
+    console.log(filterInputText);
 
 }
-
-
-
 
 
 taskInputField.addEventListener("keyup", function (event) {
