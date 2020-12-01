@@ -1,6 +1,7 @@
 const taskInputField = document.getElementById("task-input");
 const addTaskBtn = document.querySelector(".add-task");
 const taskList = document.querySelector(".task-list");
+const finishedTaskList = document.querySelector(".finished-tasks");
 const taskListItem = document.querySelectorAll(".list-item");
 const clearTasksBtn = document.querySelector(".clear-tasks");
 const filterInput = document.getElementById("filter");
@@ -13,7 +14,6 @@ function addNewTask() {
     taskInputField.value = "";
 
     //create a new li element with the input from taskInputField
-
     let newTaskListItem = document.createElement("li");
     newTaskListItem.className = "list-item";
     newTaskListItem.innerText = task;
@@ -33,14 +33,29 @@ function addNewTask() {
 
     //append new task list item (with checkbox and delete btn) to task list ul
     taskList.appendChild(newTaskListItem);
-    console.log(taskList);
+}
+
+function allEventListeners() {
+    //removing task
+    taskList.addEventListener("click", removeOneTask);
+    //marking task as done
+    taskList.addEventListener("click", markTaskFinished);
+    //unmarking task as undone
+    finishedTaskList.addEventListener("click", unmarkTaskUnfinished)
+    //task input works on enter
+    taskInputField.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            addTaskBtn.click();
+        }
+    });
 
 }
+allEventListeners();
 
 
 
 //remove one specific task
-taskList.addEventListener("click", removeOneTask);
 function removeOneTask(e) {
     if (e.target.classList.contains("btn-delete")) {
         // console.log(e.target.parentElement);
@@ -48,17 +63,21 @@ function removeOneTask(e) {
     };
 }
 
-//check that a task is finished
-taskList.addEventListener("click", markTaskAsDone);
-function markTaskAsDone(e) {
+//mark a finished task & move to the bottom
+function markTaskFinished(e) {
     if (e.target.classList.contains("checkbox") && e.target.checked) {
         e.target.parentElement.style.textDecoration = "line-through";
-    } else {
-        e.target.parentElement.style.textDecoration = "none";
+        finishedTaskList.appendChild(e.target.parentElement);
     };
 }
 
-
+//unmark a finished task and move back to the top
+function unmarkTaskUnfinished(e) {
+    if (e.target.classList.contains("checkbox")) {
+        e.target.parentElement.style.textDecoration = "none";
+        taskList.appendChild(e.target.parentElement);
+    };
+}
 
 //remove all tasks at once
 function removeAllTasks() {
@@ -69,24 +88,3 @@ function removeAllTasks() {
         taskList.removeChild(taskList.firstChild);
     }
 }
-
-//filter tasks
-filterInput.addEventListener("keyup", filterTasks);
-function filterTasks(e) {
-    filterInputText = e.target.value;
-
-    taskListItem
-
-
-}
-
-
-
-
-
-taskInputField.addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        addTaskBtn.click();
-    }
-});
