@@ -53,12 +53,9 @@ function allEventListeners() {
 }
 allEventListeners();
 
-
-
 //remove one specific task
 function removeOneTask(e) {
     if (e.target.classList.contains("btn-delete")) {
-        // console.log(e.target.parentElement);
         e.target.parentElement.remove();
     };
 }
@@ -66,7 +63,8 @@ function removeOneTask(e) {
 //mark a finished task & move to the bottom
 function markTaskFinished(e) {
     if (e.target.classList.contains("checkbox") && e.target.checked) {
-        e.target.parentElement.style.textDecoration = "line-through";
+        e.target.parentElement.classList.add("line-through");
+        console.log(e.target.parentElement);
         finishedTaskList.appendChild(e.target.parentElement);
     };
 }
@@ -82,7 +80,6 @@ function unmarkTaskUnfinished(e) {
 //remove all tasks at once
 function removeAllTasks() {
     // taskList.innerHTML = "";
-
     //faster way of removing all li elements
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);

@@ -1,10 +1,44 @@
-.btn-dark {
-  margin-left: 2rem;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato:wght@100;300;400&display=swap');
+/* font-family: 'Lato', sans-serif; */
+
+:root {
+  --orange: #c97556;
+  --tealgreen: #184149;
+  --grey: #c6d4d8;
 }
 
+.container {
+  justify-content: center;
+}
+
+.jumbotron {
+  /* background-color: #f8f8f8; */
+  font-family: 'Fjalla One', sans-serif;
+  color: var(--orange);
+}
+h1 {
+  float: center;
+}
+.btn-dark {
+  background-color: var(--tealgreen) !important;
+  border: none;
+  width: 8rem;
+  height: 3rem;
+}
+input {
+  font-family: 'Lato', sans-serif;
+}
+.list-item {
+}
+.list-item.line-through {
+  text-decoration: line-through;
+  color: var(--tealgreen);
+}
 #task-input {
   border: none;
-  border-bottom: solid 1px #fafafa;
+  border-bottom: solid 1px #636363;
   width: 100%;
   background: none;
 }
@@ -13,7 +47,7 @@
 }
 #filter {
   border: none;
-  border-bottom: solid 1px #fafafa;
+  border-bottom: solid 1px #636363;
   width: 100%;
   background: none;
   margin-bottom: 1rem;
