@@ -6,7 +6,7 @@ const taskListItem = document.querySelectorAll(".list-item");
 const clearTasksBtn = document.querySelector(".clear-tasks");
 const filterInput = document.getElementById("filter");
 const checkbox = document.getElementById("checkbox");
-const filterTasks = document.querySelector(".filter-tasks");
+const filterTasks = document.getElementById("filter-tasks");
 
 //create new li element
 function addNewTask() {
@@ -52,7 +52,7 @@ function allEventListeners() {
         }
     });
     //filtering tasks
-    filterTasks.addEventListener("click", filterTasksFunction);
+    filterTasks.addEventListener("change", filterTasksFunction);
 
 }
 allEventListeners();
@@ -97,9 +97,6 @@ function removeAllTasks() {
 function filterTasksFunction(e) {
     const tasks = document.getElementById("all-tasks").getElementsByTagName("li");
 
-    // document.getElementById("all-tasks").childNodes;
-    console.log(e.target.parentElement);
-
     for (task of tasks) {
         switch (e.target.value) {
             case "all":
@@ -121,7 +118,6 @@ function filterTasksFunction(e) {
                 break;
         }
     }
-
 
 }
 
