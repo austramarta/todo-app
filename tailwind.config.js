@@ -7,13 +7,25 @@ module.exports = {
     extend: {
       colors: {
         green: {
-          100: '#9ba679',
+          100: '#6BA17B',
           200: '#cedf99',
         },
         rose: {
-          100: '#e5456e',
+          100: '#E04325',
           200: '#f6ced8',
         },
+        drkgreen: {
+          100: '#2A4E36'
+        },
+        grey: {
+          100: '#F7F7F7',
+          200: '#CFD8DB',
+          300: '#91A4AA',
+        },
+        blue: {
+          100: '#79D3E0',
+          200: '#101E2B',
+        }
       }
     },
     fontFamily: {

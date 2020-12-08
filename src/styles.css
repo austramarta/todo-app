@@ -12,14 +12,18 @@
 .btn-delete:after {
   display: inline-block;
   content: '\2715';
-  color: red;
+  color: #e04325;
   position: relative;
   width: 4rem;
 }
 .btn {
-  @apply border-2 h-10 py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
+  @apply border-2 h-14 py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider hover:bg-transparent focus:outline-none hover:shadow-inner shadow-lg;
 }
 
 .checkbox {
-  @apply border-2 border-green-200 w-5 h-5 mt-1;
+  @apply border-rose-100 w-5 h-5 mt-1;
+}
+
+.list {
+  @apply border bg-transparent uppercase text-lg my-2 h-10 shadow-md px-2 pt-1;
 }

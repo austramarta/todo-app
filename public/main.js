@@ -16,7 +16,7 @@ function addNewTask() {
 
     //create a new li element with the input from taskInputField
     let newTaskListItem = document.createElement("li");
-    newTaskListItem.className = "list-item border-2 border-rose-100 bg-rose-200 my-2 h-10 p-2 incomplete";
+    newTaskListItem.className = "list-item list border-rose-100 text-rose-100 incomplete";
     newTaskListItem.innerText = task;
 
     //create a delete btn for each task list item
@@ -28,7 +28,7 @@ function addNewTask() {
     //create a checkbox for each task list item
     let taskCheck = document.createElement("input");
     taskCheck.setAttribute("type", "checkbox");
-    taskCheck.className = "checkbox float-right mr-1.5 ";
+    taskCheck.className = "checkbox float-right mr-2 ";
     taskCheck.id = "checkbox";
     newTaskListItem.appendChild(taskCheck);
 
@@ -68,7 +68,7 @@ function removeOneTask(e) {
 function markTaskFinished(e) {
     if (e.target.classList.contains("checkbox") && e.target.checked) {
         e.target.parentElement.style.textDecoration = "line-through";
-        e.target.parentElement.className = "list-item border-2 border-green-100 bg-green-200 my-2 h-10 p-2 complete";
+        e.target.parentElement.className = "list-item list text-blue-100 border-blue-100 complete";
         finishedTaskList.appendChild(e.target.parentElement);
     };
 }
@@ -77,7 +77,7 @@ function markTaskFinished(e) {
 function unmarkTaskUnfinished(e) {
     if (e.target.classList.contains("checkbox")) {
         e.target.parentElement.style.textDecoration = "none";
-        e.target.parentElement.className = "list-item border-2 border-rose-100 bg-rose-200 my-2 h-10 p-2 incomplete";
+        e.target.parentElement.className = "list-item list border-rose-100 text-rose-100 incomplete";
         taskList.appendChild(e.target.parentElement);
     };
 }

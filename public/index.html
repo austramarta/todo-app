@@ -8,24 +8,27 @@
     <title>To Do List</title>
 </head>
 
-<body class="font-body mt-20 grid justify-center">
+<body class="font-body bg-grey-200 mt-20 grid">
 
 
-    <div class="">
-        <div class="">
-            <h1 class="font-title font-bold uppercase text-6xl mb-5 tracking-widest">To do list</h1>
+    <div class="grid grid-cols-2">
+        <div class="col-span-1">
+            <h1 class="font-title justify-center font-bold uppercase text-7xl mb-5 tracking-wider text-rose-100 ml-48">
+                To do list
+            </h1>
         </div>
 
-        <main>
-            <div class="">
-                <input class="w-96 border h-10 focus:outline-none" type="text" id="task-input"
-                    placeholder="Add new task">
-                <button
-                    class="add-task btn ml-5 border-green-100 text-green-100 hover:bg-green-100 hover:text-white focus:outline-none"
+        <main class="col-span-1 mr-20">
+            <div class="grid grid-cols-3 mb-8">
+                <input class="col-span-2 border h-14 focus:outline-none bg-transparent p-3 shadow-lg" type="text"
+                    id="task-input" placeholder="Add new task">
+                <button class="add-task col-span-1 btn ml-5 bg-blue-100 text-white border-blue-100 hover:text-blue-100 "
                     onclick="addNewTask()">Add task</button>
             </div>
-            <div class="select w-96 border h-10 focus:outline-none">
-                <select name="filter-options" id="filter-tasks" class="w-11/12 focus:outline-none">
+
+            <div class="select border h-14 focus:outline-none shadow-lg">
+                <select name="filter-options" id="filter-tasks"
+                    class="w-full h-14 focus:outline-none bg-transparent pl-3 text-grey-300">
                     <option value="all">All</option>
                     <option value="complete">Complete</option>
                     <option value="not-complete">Incomplete</option>
@@ -33,19 +36,22 @@
             </div>
 
             <div>
-                <h2 class="font-title font-bold uppercase text-2xl mt-5">Tasks</h2>
+                <h2 class="font-title font-bold uppercase text-4xl mt-20 text-blue-100">Tasks</h2>
             </div>
 
             <div id="all-tasks">
                 <ul class="task-list"></ul>
+                <hr class="mt-5">
                 <ul class="finished-tasks"></ul>
             </div>
-            <hr class="mt-5">
-            <button
-                class="clear-tasks btn mt-5 border-rose-100 text-rose-100 hover:bg-rose-100 hover:text-white focus:outline-none"
-                onclick="removeAllTasks()">Clear
-                All
-                Tasks</button>
+            <div class="grid grid-cols-3">
+                <span class="col-span-2"> </span>
+                <button
+                    class="col-span-1 ml-5 clear-tasks btn mt-5 border-rose-100 hover:text-rose-100 hover:bg-transparent bg-rose-100 text-white"
+                    onclick="removeAllTasks()">Clear
+                    All
+                    Tasks</button>
+            </div>
         </main>
 
 
