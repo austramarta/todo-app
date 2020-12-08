@@ -68,7 +68,7 @@ function removeOneTask(e) {
 function markTaskFinished(e) {
     if (e.target.classList.contains("checkbox") && e.target.checked) {
         e.target.parentElement.style.textDecoration = "line-through";
-        e.target.parentElement.className = "border-2 border-green-100 bg-green-200 my-2 h-10 p-2 complete";
+        e.target.parentElement.className = "list-item border-2 border-green-100 bg-green-200 my-2 h-10 p-2 complete";
         finishedTaskList.appendChild(e.target.parentElement);
     };
 }
@@ -77,7 +77,7 @@ function markTaskFinished(e) {
 function unmarkTaskUnfinished(e) {
     if (e.target.classList.contains("checkbox")) {
         e.target.parentElement.style.textDecoration = "none";
-        e.target.parentElement.className = "border-2 border-rose-100 bg-rose-200 my-2 h-10 p-2 incomplete";
+        e.target.parentElement.className = "list-item border-2 border-rose-100 bg-rose-200 my-2 h-10 p-2 incomplete";
         taskList.appendChild(e.target.parentElement);
     };
 }
@@ -93,37 +93,35 @@ function removeAllTasks() {
     // }
 }
 
-//filtering the tasks according to complete/incomplete
+//filtering complete/incomplete tasks
 function filterTasksFunction(e) {
     const tasks = document.getElementById("all-tasks").getElementsByTagName("li");
 
     // document.getElementById("all-tasks").childNodes;
-    console.log(tasks);
+    console.log(e.target.parentElement);
 
-
-
-    for (let i = 0; i < tasks.length; i++) {
-        console.log(e.target.value);
-
+    for (task of tasks) {
         switch (e.target.value) {
             case "all":
-                tasks[i].style.display = "block";
+                task.style.display = "block";
                 break;
             case "complete":
-                if (tasks[i].classList.contains("complete")) {
-                    tasks[i].style.display = "block";
+                if (task.classList.contains("complete")) {
+                    task.style.display = "block";
                 } else {
-                    tasks[i].style.display = "none";
+                    task.style.display = "none";
                 }
                 break;
-            case "incomplete":
-                if (!tasks[i].classList.contains("incomplete")) {
-                    tasks[i].style.display = "block";
+            case "not-complete":
+                if (task.classList.contains("incomplete")) {
+                    task.style.display = "block";
                 } else {
-                    tasks[i].style.display = "none";
+                    task.style.display = "none";
                 }
                 break;
         }
     }
+
+
 }
 
