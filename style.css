@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato:wght@100;300;400&display=swap');
 /* font-family: 'Lato', sans-serif; */
 
@@ -66,7 +64,6 @@ input {
   content: '\2715';
   color: black;
   position: relative;
-  top: -0.4rem;
   width: 2rem;
 }
 .checkbox {

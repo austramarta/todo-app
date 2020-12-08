@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.btn-delete {
+  @apply w-4 h-4 float-right;
+}
+
+/* render 'X' instead of delete button*/
+.btn-delete:after {
+  display: inline-block;
+  content: '\2715';
+  color: red;
+  position: relative;
+  width: 4rem;
+}
+.btn {
+  @apply border-2 h-10 py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
+}
+
+.checkbox {
+  @apply border-2 border-green-200 w-5 h-5 mt-1;
+}

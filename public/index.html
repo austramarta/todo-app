@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>To Do List</title>
+</head>
+
+<body class="font-body mt-20 grid justify-center">
+
+
+    <div class="">
+        <div class="">
+            <h1 class="font-title font-bold uppercase text-6xl mb-5 tracking-widest">To do list</h1>
+        </div>
+
+        <main>
+            <div class="">
+                <input class="w-96 border h-10 focus:outline-none" type="text" id="task-input"
+                    placeholder="Add new task">
+                <button class="add-task btn ml-5 border-green-100 text-green-100 hover:bg-green-100 hover:text-white"
+                    onclick="addNewTask()">Add task</button>
+            </div>
+            <div class="select w-96 border h-10 focus:outline-none">
+                <select name="filter-otions" class="filter-tasks w-11/12 focus:outline-none">
+                    <option value="all">All</option>
+                    <option value="complete">Complete</option>
+                    <option value="incomplete">Incomplete</option>
+                </select>
+            </div>
+
+            <div>
+                <h2 class="font-title font-bold uppercase text-2xl mt-5">Tasks</h2>
+            </div>
+
+            <div id="all-tasks">
+                <ul class="task-list"></ul>
+                <ul class="finished-tasks"></ul>
+            </div>
+            <hr class="mt-5">
+            <button class="clear-tasks btn mt-5 border-rose-100 text-rose-100 hover:bg-rose-100 hover:text-white"
+                onclick="removeAllTasks()">Clear
+                All
+                Tasks</button>
+        </main>
+
+
+
+    </div>
+
+
+
+
+
+    <script src="main.js" type="text/javascript"></script>
+</body>
+
+</html>
