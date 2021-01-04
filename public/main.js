@@ -7,12 +7,13 @@ const clearTasksBtn = document.querySelector(".clear-tasks");
 const filterInput = document.getElementById("filter");
 const checkbox = document.getElementById("checkbox");
 const filterTasks = document.getElementById("filter-tasks");
+const changeColorMode = document.getElementById("background-mode");
 
 //create new li element
 function addNewTask() {
     //get taskInputField value and clear the input field after that
     let task = taskInputField.value;
-    taskInputField.value = "";
+
 
     //create a new li element with the input from taskInputField
     let newTaskListItem = document.createElement("li");
@@ -45,14 +46,17 @@ function allEventListeners() {
     //unmarking task as undone
     finishedTaskList.addEventListener("click", unmarkTaskUnfinished)
     //task input works on enter
-    taskInputField.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            addTaskBtn.click();
-        }
-    });
+    // taskInputField.addEventListener("keyup", function (e) {
+    //     if (e.keyCode === 13) {
+    //         e.preventDefault();
+    //         addTaskBtn.click();
+    //     }
+    // });
+
     //filtering tasks
     filterTasks.addEventListener("change", filterTasksFunction);
+    //changing color mode
+    changeColorMode.addEventListener("change", changeColorModeFunction);
 
 }
 allEventListeners();
@@ -120,4 +124,40 @@ function filterTasksFunction(e) {
     }
 
 }
+
+//toggling dark mode
+function changeColorModeFunction(e) {
+    const documentBody = document.querySelector("body")
+
+    switch (e.target.value) {
+        case "dark":
+            documentBody.classList.add("dark-mode");
+            break;
+        case "light":
+            documentBody.classList.remove("dark-mode");
+            break;
+    }
+}
+
+//saving all tasks to session storage
+document.querySelector("form").addEventListener("submit", function (e) {
+    //getting the value from input field
+    const task = taskInputField.value;
+    //this is where all the tasks are going to be saved
+    let tasks;
+    //checking if the session storage has a value already
+    if (sessionStorage.getItem("tasks") === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(sessionStorage.getItem("tasks"));
+    }
+    //adding tasks to the array
+    tasks.push(task);
+    //adding tasks to teh session storage
+    sessionStorage.setItem("tasks", JSON.stringify(tasks));
+    //clear the input fiel
+    taskInputField.value = "";
+    //prevent default 
+    e.preventDefault();
+})
 

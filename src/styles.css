@@ -27,3 +27,6 @@
 .list {
   @apply border bg-transparent uppercase text-lg my-2 h-10 shadow-md px-2 pt-1;
 }
+.dark-mode {
+  @apply bg-grey-400;
+}

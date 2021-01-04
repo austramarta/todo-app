@@ -8,7 +8,18 @@
     <title>To Do List</title>
 </head>
 
-<body class="font-body bg-grey-200 mt-20 grid">
+<body class="font-body bg-grey-200 mt-10 grid">
+
+    <div class="flex justify-end mb-20 mr-20">
+        <div class="select border h-8 focus:outline-none shadow-lg w-36">
+            <select name="background-options" id="background-mode"
+                class="w-full h-8 focus:outline-none bg-transparent pl-3 text-grey-300">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+    </div>
+
 
 
     <div class="grid grid-cols-2">
@@ -19,12 +30,15 @@
         </div>
 
         <main class="col-span-1 mr-20">
-            <div class="grid grid-cols-3 mb-8">
-                <input class="col-span-2 border h-14 focus:outline-none bg-transparent p-3 shadow-lg" type="text"
-                    id="task-input" placeholder="Add new task">
-                <button class="add-task col-span-1 btn ml-5 bg-blue-100 text-white border-blue-100 hover:text-blue-100 "
-                    onclick="addNewTask()">Add task</button>
-            </div>
+            <form id="form" action="">
+                <div class="grid grid-cols-3 mb-8">
+                    <input class="col-span-2 border h-14 focus:outline-none bg-transparent p-3 shadow-lg" type="text"
+                        id="task-input" placeholder="Add new task">
+                    <button
+                        class="add-task col-span-1 btn ml-5 bg-blue-100 text-white border-blue-100 hover:text-blue-100 "
+                        onclick="addNewTask()">Add task</button>
+                </div>
+            </form>
 
             <div class="select border h-14 focus:outline-none shadow-lg">
                 <select name="filter-options" id="filter-tasks"
