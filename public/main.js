@@ -56,7 +56,7 @@ function allEventListeners() {
     //filtering tasks
     filterTasks.addEventListener("change", filterTasksFunction);
     //changing color mode
-    changeColorMode.addEventListener("change", changeColorModeFunction);
+    changeColorMode.addEventListener("change", onThemeChange);
 
 }
 allEventListeners();
@@ -125,19 +125,35 @@ function filterTasksFunction(e) {
 
 }
 
-//toggling dark mode
-function changeColorModeFunction(e) {
-    const documentBody = document.querySelector("body")
+//toggling dark mode && adding it to cookies
+const themes = [{ name: "light", className: "light-mode" }, { name: "dark", className: "dark-mode" }];
 
-    switch (e.target.value) {
-        case "dark":
-            documentBody.classList.add("dark-mode");
-            break;
-        case "light":
-            documentBody.classList.remove("dark-mode");
-            break;
+function changeTheme(themeName) {
+    //get body tag to toggle its classes
+    const documentBody = document.querySelector("body");
+    for (const theme of themes) {
+        //if the element clicked has the same value as the theme from const themes, add classname that corresponds to that name
+        if (themeName == theme.name) {
+            documentBody.classList.add(theme.className);
+            changeColorMode.value = theme.name;
+        } else {
+            documentBody.classList.remove(theme.className);
+        }
     }
 }
+
+function onThemeChange(e) {
+    changeTheme(e.target.value);
+    document.cookie = "theme=" + e.target.value;
+
+}
+let cookieValue = document.cookie
+    .split('; ')
+    .find(function (cookie) { return cookie.startsWith("theme") }) //cookie => cookie.startsWith("theme")
+    .split('=')[1];
+
+changeTheme(cookieValue);
+
 
 //saving all tasks to session storage
 document.querySelector("form").addEventListener("submit", function (e) {
