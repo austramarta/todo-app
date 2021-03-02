@@ -21,13 +21,13 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        <div class="col-span-1 ml-20 md:ml-48">
-            <h1 class="font-title font-bold uppercase text-7xl mb-5 tracking-wider text-rose-100 justify-center  ">
+        <div class="col-span-1 ml-10">
+            <h1 class="font-title font-bold uppercase text-8xl mb-5 tracking-wider text-rose-100 justify-center">
                 To do list
             </h1>
         </div>
 
-        <main class="col-span-1 mr-20 ml-20 md:ml-0">
+        <main class="col-span-1 mr-10 ml-20 md:ml-0">
             <form id="form" action="">
                 <div class="grid grid-cols-3 mb-8">
                     <input class="col-span-2 border h-14 focus:outline-none bg-transparent p-3 shadow-lg" type="text"
@@ -46,29 +46,37 @@
                     <option value="not-complete">Incomplete</option>
                 </select>
             </div>
-
-            <div>
-                <h2 class="font-title font-bold uppercase text-4xl mt-20 text-blue-100">Tasks</h2>
-            </div>
-
-            <div id="all-tasks">
-                <ul class="task-list"></ul>
-                <hr class="mt-5">
-                <ul class="finished-tasks"></ul>
-            </div>
-            <div class="grid grid-cols-3">
-                <span class="col-span-2"> </span>
-                <button
-                    class="col-span-1 ml-5 clear-tasks btn mt-5 border-rose-100 hover:text-rose-100 hover:bg-transparent bg-rose-100 text-white"
-                    onclick="removeAllTasks()">Clear
-                    All
-                    Tasks</button>
-            </div>
         </main>
-
-
-
     </div>
+
+
+    <div>
+        <h2 class="font-title font-bold uppercase text-4xl mt-20 text-blue-100 ml-10">Tasks</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 " id="all-tasks">
+        <div class="col-span-1 mx-10">
+            <ul class="task-list"></ul>
+        </div>
+        <div class="col-span-1 mx-10">
+            <ul class="finished-tasks"></ul>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-3">
+        <span class="col-span-2"> </span>
+
+        <button
+            class="col-span-1 mx-10 clear-tasks btn mt-5 mb-2 border-rose-100 hover:text-rose-100 hover:bg-transparent bg-rose-100 text-white"
+            onclick="removeAllTasks()">Clear
+            All
+            Tasks</button>
+    </div>
+
+
+
+
+
 
 
 

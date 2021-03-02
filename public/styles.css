@@ -32403,6 +32403,18 @@ video {
   width: 1rem;
 }
 
+@media (min-width: 640px){
+  .btn-delete{
+    margin-top: 0.25rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .btn-delete{
+    margin-top: 0px;
+  }
+}
+
 /* render 'X' instead of delete button*/
 
 .btn-delete:after {
@@ -32474,7 +32486,7 @@ video {
   text-transform: uppercase;
 }
 
-@media (min-width: 768px){
+@media (min-width: 1024px){
   .list{
     font-size: 1.125rem;
     line-height: 1.75rem;

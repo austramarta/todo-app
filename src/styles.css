@@ -5,7 +5,7 @@
 @import 'tailwindcss/utilities';
 
 .btn-delete {
-  @apply w-4 h-4 float-right;
+  @apply w-4 h-4 float-right sm:mt-1 lg:mt-0;
 }
 
 /* render 'X' instead of delete button*/
@@ -25,7 +25,7 @@
 }
 
 .list {
-  @apply border bg-transparent uppercase text-xs md:text-lg my-2 h-10 shadow-md px-2 pt-1;
+  @apply border bg-transparent uppercase text-xs lg:text-lg my-2 h-10 shadow-md px-2 pt-1;
 }
 .dark-mode {
   @apply bg-grey-400;
