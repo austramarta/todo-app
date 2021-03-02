@@ -32,10 +32,13 @@ module.exports = {
     fontFamily: {
       title: ['Fjalla One', 'sans-serif'],
       body: ['Lato', 'sans-serif'],
-    }
+    },
+
   },
   variants: {
     extend: {},
   },
   plugins: [],
+
+
 }

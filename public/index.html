@@ -8,7 +8,7 @@
     <title>To Do List</title>
 </head>
 
-<body class="font-body bg-grey-200 mt-10 grid">
+<body class="font-body bg-grey-200 mt-10 md:grid">
 
     <div class="flex justify-end mb-20 mr-20">
         <div class="select border h-8 focus:outline-none shadow-lg w-36">
@@ -20,16 +20,14 @@
         </div>
     </div>
 
-
-
-    <div class="grid grid-cols-2">
-        <div class="col-span-1">
-            <h1 class="font-title justify-center font-bold uppercase text-7xl mb-5 tracking-wider text-rose-100 ml-48">
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div class="col-span-1 ml-20 md:ml-48">
+            <h1 class="font-title font-bold uppercase text-7xl mb-5 tracking-wider text-rose-100 justify-center  ">
                 To do list
             </h1>
         </div>
 
-        <main class="col-span-1 mr-20">
+        <main class="col-span-1 mr-20 ml-20 md:ml-0">
             <form id="form" action="">
                 <div class="grid grid-cols-3 mb-8">
                     <input class="col-span-2 border h-14 focus:outline-none bg-transparent p-3 shadow-lg" type="text"
