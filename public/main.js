@@ -8,7 +8,6 @@ const taskFilter = document.getElementById("filter-tasks");
 const changeColorMode = document.getElementById("background-mode");
 
 function allEventListeners() {
-    addTaskBtn.addEventListener("click", addTaskFromInput)
     taskList.addEventListener("click", removeOneTask);
     finishedTaskList.addEventListener("click", removeOneTask);
     taskList.addEventListener("click", markInputTaskFinished);
@@ -19,13 +18,14 @@ function allEventListeners() {
 }
 allEventListeners();
 
-function addNewTask(task) {
+function addNewTask(task, cleanInputField = false) {
     let newTaskListItem = document.createElement("li");
     newTaskListItem.className = "list-item list border-rose-100 text-rose-100 incomplete";
-    newTaskListItem.innerText = task;
+    newTaskListItem.innerText = task.name;
 
     let deleteTaskBtn = document.createElement("a");
     deleteTaskBtn.setAttribute("href", "#");
+    deleteTaskBtn.setAttribute("data-id", `${task.id}`);
     deleteTaskBtn.classList.add("btn-delete");
     newTaskListItem.appendChild(deleteTaskBtn);
 
@@ -36,11 +36,16 @@ function addNewTask(task) {
     newTaskListItem.appendChild(taskCheck);
 
     taskList.appendChild(newTaskListItem);
+
+    if (cleanInputField) {
+        taskInputField.value = " ";
+    }
+
     return newTaskListItem;
 }
 
 function addTaskFromInput() {
-    addNewTask(taskInputField.value);
+    addNewTask({ name: taskInputField.value });
 }
 
 function finishTask(e) {
@@ -64,11 +69,12 @@ function unmarkTaskFinished(e) {
 }
 
 function removeOneTask(e) {
+    let id = e.target.getAttribute('data-id');
+
     if (e.target.classList.contains("btn-delete")) {
         e.target.parentElement.remove();
+        deleteTaskFromDB(id);
     };
-
-
 }
 
 function removeAllTasks() {
@@ -148,27 +154,22 @@ function saveToSessionStorage(e) {
     e.preventDefault();
 }
 
-
-//displaying saved tasks from api
+//API actions
 function fetchAPIData() {
-    //console.log
     fetch("http://localhost:8886/todo_list/api/todo_item/read.php")
         .then(response => response.json())
         .then(data => {
             let dataArray = data.data;
             dataArray.forEach(todoItem => {
-                let todoListItem = addNewTask(todoItem.name);
+                let todoListItem = addNewTask(todoItem);
                 if (todoItem.completed) {
                     finishTask(todoListItem.getElementsByClassName("checkbox")[0]);
-                    document.getElementsByClassName("checkbox").checked = true;
                 }
             })
         });
 
 }
 fetchAPIData();
-
-//POST tasks to database
 
 function addTaskToDB(e) {
     e.preventDefault();
@@ -184,22 +185,26 @@ function addTaskToDB(e) {
         },
         body: JSON.stringify({ name: title, completed: completed })
     })
-        .then(response => response.json)
-        .then(data => console.log(data))
+        .then(response => response.json())
+        .then(data => addNewTask(data, true))
         .catch(error => { throw (error) })
 }
 
-function deleteTaskFromDB() {
 
 
-    // fetch("http://localhost:8886/todo_list/api/todo_item/delete.php/" + id, {
-    //     method: 'DELETE',
-    // })
-    //     .then(response => response.json()) // or res.json()
-    //     .then(response => console.log(response))
+function deleteTaskFromDB(id) {
+    return fetch("http://localhost:8886/todo_list/api/todo_item/delete.php", {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({ id: id })
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => reject(err));
+
 }
-
-deleteTaskFromDB()
 
 
 
